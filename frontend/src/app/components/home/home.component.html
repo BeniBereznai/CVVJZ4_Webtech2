@@ -1,0 +1,15 @@
+<div class="container mt-4 ">
+  <h2>Próbatermeink</h2>
+  <p >Próbahelyünkön 6 próbaterem áll készen a zenészek fogadására.
+  <div>
+     <button (click)="toggleChart()" class="btn btn-primary mb-3">
+        {{ isChartVisible ? 'Elrejtés' : 'Próbatermek Értékelési Gráfja' }}
+      </button>
+  </div>
+
+  <div *ngIf="isChartVisible">
+    <app-room-rates-chart></app-room-rates-chart>
+  </div>
+  <app-room-list></app-room-list>
+
+</div>

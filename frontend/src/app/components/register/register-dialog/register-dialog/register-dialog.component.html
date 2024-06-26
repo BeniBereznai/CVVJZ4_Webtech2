@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Regisztráció</h1>
+<div mat-dialog-content>
+  <form [formGroup]="registerForm">
+    <mat-form-field>
+      <mat-label>Név</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+        A név megadása kötelező
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('name')?.hasError('minlength')">
+        A névnek legalább 5 karakter hosszúnak kell lennie
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+        Az email megadása kötelező
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+        Érvénytelen email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+        A jelszó megadása kötelező
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+        A jelszónak legalább 6 karakter hosszúnak kell lennie
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Mégse</button>
+  <button mat-button (click)="onRegisterClick()" [disabled]="!registerForm.valid">Regisztráció</button>
+</div>

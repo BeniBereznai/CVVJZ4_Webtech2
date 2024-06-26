@@ -1,0 +1,8 @@
+.user-list-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.user-list-header {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Óra</th>
+      <th *ngFor="let room of rooms">{{ room.name }}<br>{{ room.pricePerHour }} Ft</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hour of hours">
+      <td>{{ hour }}</td>
+      <td *ngFor="let room of rooms"
+          [matTooltip]="!isLoggedIn ? 'Be kell jelentkezned a foglaláshoz' : 'Kattints a foglaláshoz'"
+          (click)="openBookingDialog(room, hour)"
+          [ngClass]="{'disabled-cell': !isLoggedIn}">
+        <span *ngIf="bookings[room.id]?.[hour]">{{ bookings[room.id][hour].bookingName }}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

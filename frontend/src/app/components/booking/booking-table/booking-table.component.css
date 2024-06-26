@@ -1,0 +1,4 @@
+.disabled-cell {
+  pointer-events: none;
+  cursor: not-allowed;
+}

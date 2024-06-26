@@ -1,0 +1,15 @@
+<div class="list-group">
+  <a routerLink="home" class="list-group-item list-group-item-action active">Főoldal</a>
+  <a routerLink="bookings" class="list-group-item list-group-item-action">Online foglalás</a>
+  <a routerLink="home" class="list-group-item list-group-item-action">Próbatermek</a>
+  <a routerLink="view-bookings" class="list-group-item list-group-item-action" *ngIf="isLoggedIn" >Foglalásaim</a>
+  <a routerLink="profile" class="list-group-item list-group-item-action" *ngIf="isLoggedIn" >Profil módosítása</a>
+  <a class="list-group-item list-group-item-action" *ngIf="!isLoggedIn" (click)="openLoginDialog()">Belépés</a>
+  <a class="list-group-item list-group-item-action" *ngIf="isLoggedIn" (click)="logout()">Kijelentkezés</a>
+  <a class="list-group-item list-group-item-action" *ngIf="!isLoggedIn" (click)="openRegisterDialog()">Regisztráció</a>
+</div>
+<div class="mt-4">
+  <h5>Kapcsolat</h5>
+  <p>+36 30 626 3251<br>info&#64;probazona.hu</p>
+</div>
+<app-user></app-user>

@@ -1,0 +1,9 @@
+<div class="user-list-header">
+  <h2>Regisztrált felhasználók</h2>
+</div>
+<div class="list-group mt-4 user-list-container">
+  <a *ngFor="let user of users" class="list-group-item list-group-item-action">
+    {{ user.name }} ({{ user.email }})
+  </a>
+</div>
+

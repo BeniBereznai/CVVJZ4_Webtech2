@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="roomId">
+      <th mat-header-cell *matHeaderCellDef> Szoba ID </th>
+      <td mat-cell *matCellDef="let booking"> {{booking.roomId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bookingName">
+      <th mat-header-cell *matHeaderCellDef> Foglalás Neve </th>
+      <td mat-cell *matCellDef="let booking"> {{booking.bookingName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef> Kezdési Idő </th>
+      <td mat-cell *matCellDef="let booking"> {{booking.startTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef> Befejezési Idő </th>
+      <td mat-cell *matCellDef="let booking"> {{booking.endTime}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

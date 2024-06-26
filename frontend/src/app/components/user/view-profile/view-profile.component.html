@@ -1,0 +1,31 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar1.png" >
+  <div class="card-body">
+    <h5 class="card-title">Profil adatok:</h5>
+    <p class="card-text">Felhasználónév: {{ user.name }}</p>
+    <p class="card-text">Email: {{ user.email }}</p>
+    <button class="btn btn-primary" (click)="openDialog()">Jelszó módosítása</button>
+    <button class="btn btn-danger" (click)="deleteUser()">Felhasználó törlése</button>
+  </div>
+</div>
+<ng-template #editProfileDialog>
+  <h1 mat-dialog-title>Jelszó módosítás</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="passwordForm">
+      <mat-form-field>
+        <mat-label>Jelszó</mat-label>
+        <input matInput type="email" formControlName="password">
+        <mat-error *ngIf="passwordForm.get('password')?.hasError('required')">
+          A jelszó megadása kötelező
+        </mat-error>
+        <mat-error *ngIf="passwordForm.get('password')?.hasError('minlength')">
+          A jelszónak legalább 6 karakter hosszúnak kell lennie
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="close()">Mégse</button>
+    <button mat-button (click)="updateUser()" [disabled]="!passwordForm.valid">Módosítás</button>
+  </div>
+</ng-template>

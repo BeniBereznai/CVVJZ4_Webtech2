@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Bejelentkezés</h1>
+<div mat-dialog-content>
+  <form [formGroup]="loginForm">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+        Az email megadása kötelező
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+        Érvénytelen email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        A jelszó megadása kötelező
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+        A jelszónak legalább 6 karakter hosszúnak kell lennie
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Mégse</button>
+  <button mat-button (click)="onLoginClick()" [disabled]="!loginForm.valid">Bejelentkezés</button>
+</div>
